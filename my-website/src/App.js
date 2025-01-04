@@ -28,7 +28,8 @@ import {
   Layout,  
   Laptop,
   Book,
-  Brain
+  Brain,
+  Menu
 } from 'lucide-react';
 
 // Styles
@@ -95,41 +96,6 @@ const SkillBadge = ({ children }) => (
   </span>
 );
 
-const ParticleEffect = () => {
-  useEffect(() => {
-    const createParticle = () => {
-      const particle = document.createElement('div');
-      particle.className = 'particle';
-      
-      const size = Math.random() * 10 + 5;
-      particle.style.width = `${size}px`;
-      particle.style.height = `${size}px`;
-      
-      particle.style.left = `${Math.random() * 100}%`;
-      particle.style.top = `${Math.random() * 100}%`;
-      
-      particle.style.opacity = Math.random() * 0.5;
-      
-      document.querySelector('.particle-container').appendChild(particle);
-      
-      const animation = particle.animate([
-        { transform: 'translate(0, 0)', opacity: particle.style.opacity },
-        { transform: `translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px)`, opacity: 0 }
-      ], {
-        duration: Math.random() * 3000 + 2000,
-        easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
-      });
-      
-      animation.onfinish = () => particle.remove();
-    };
-
-    const interval = setInterval(createParticle, 100);
-    return () => clearInterval(interval);
-  }, []);
-
-  return <div className="particle-container absolute inset-0 overflow-hidden" />;
-};
-
 const useTypewriter = (text, speed = 100) => {
   const [displayText, setDisplayText] = useState('');
   const [index, setIndex] = useState(0);
@@ -185,10 +151,10 @@ const SkillCarousel = () => {
 const projectsData = [
   {
     id: 1,
-    title: "Fitness Meals for Athletes",
-    description: "Developed A WordPress website for athletes to find and order fitness-focused meals.",
-    technologies: ["WordPress", "CSS"],
-    live: "https://zeyadit335.wordpress.com/",
+    title: "Patient Health Hub",
+    description: "A modern, full-stack healthcare management system that provides a comprehensive interface for managing patient information, medical records, and visit history.",
+    technologies: ["React.js", "Python", "PostgreSQL"],
+    live: "https://github.com/zmegahed/Health-Patient-App",
     images: ["./images/fitnessmeals.png"]
   },
   {
@@ -196,7 +162,7 @@ const projectsData = [
     title: "Madina Islamic Center Rework",
     description: "Redesigned a wordpress web application featuring a booking calendar and donation system.",
     technologies: ["WordPress", "CSS", "Elementor", "JavaScript"],
-    live: "https://projects.zmegahed.com",
+    live: "https://zmegahed.github.io/MicRework/micrework.html",
     images: ["./images/madina.png"]
   },
   {
@@ -204,7 +170,7 @@ const projectsData = [
     title: "Stansberry One Page",
     description: "Developed a full-stack web application featuring a grade calculator and office sign-up system with automated email notifications. The system streamlines the process of scheduling office visits while maintaining accurate records and providing instant feedback to users.",
     technologies: ["HTML", "CSS", "JavaScript"],
-    live: "https://projects.zmegahed.com",
+    live: "https://zmegahed.github.io/HTML_CSS_SPECIALIST/index.html",
     images: ["./images/stansberry.png"]
   }
 ];
@@ -218,9 +184,8 @@ const ContactSection = () => {
   const mailtoLink = `mailto:zeyadfouad34@gmail.com?subject=${encodeURIComponent(emailParams.subject)}&body=${encodeURIComponent(emailParams.body)}`;
   
   return (
-    <section className="relative py-24 bg-[#050517]">
+    <section id="contact" className="relative py-24 bg-[#050517]">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header */}
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-2">
             <div className="h-px w-8 bg-[#4E6E5D]"/>
@@ -229,9 +194,7 @@ const ContactSection = () => {
           <h2 className="text-3xl font-bold text-white">Let's Connect</h2>
         </div>
 
-        {/* Main Content */}
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Left Column - Contact Info */}
           <div className="space-y-8">
             <div>
               <p className="text-xl text-white mb-4">Ready to discuss your next project?</p>
@@ -242,7 +205,6 @@ const ContactSection = () => {
               </p>
             </div>
 
-            {/* Contact Methods */}
             <div className="space-y-4">
               <a 
                 href={mailtoLink}
@@ -254,7 +216,6 @@ const ContactSection = () => {
             </div>
           </div>
 
-          {/* Right Column - Contact Links */}
           <div className="bg-white/5 rounded-2xl p-8 backdrop-blur-sm border border-white/10">
             <h3 className="text-lg font-semibold text-white mb-6">Connect With Me</h3>
             
@@ -348,6 +309,7 @@ const Portfolio = () => {
   const [activeCard, setActiveCard] = useState(null);
   const typewriterText = "I am a Web Designer and a Front End Developer";
   const displayText = useTypewriter(typewriterText);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const [heroRef, heroVisible] = useVisibility();
   const [aboutRef, aboutVisible] = useVisibility();
@@ -408,142 +370,172 @@ const Portfolio = () => {
     "Data Structures and Algorithms in Python"
   ];
   
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const navHeight = 80; 
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+    setActiveSection(sectionId);
+  };
+
+  const handleNavClick = (section) => {
+    scrollToSection(section);
+  };
+  
 
   return (
     <>
       <style>{styles}</style>
       <div className="min-h-screen bg-[#050517] text-gray-100">
        <nav className="fixed top-0 left-0 right-0 z-50">
-  {/* Background with gradient and blur */}
   <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-[#050517]/95 to-gray-900/95 backdrop-blur-lg">
     <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#4E6E5D]/50 to-transparent" />
   </div>
 
-  <div className="container mx-auto px-6 py-3 relative">
-    <div className="flex items-center justify-between">
-      
+  <div className="container mx-auto px-4 sm:px-6 py-3 relative">
+    <div className="flex items-center justify-between flex-wrap gap-4">
       <div className="flex items-center gap-4">
-        <a 
-          href="https://github.com/zmegahed"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-all duration-300 group"
-        >
-          <Github size={20} className="transform group-hover:scale-110 transition-transform duration-300" />
+        <a href="https://github.com/zmegahed" target="_blank" rel="noopener noreferrer"
+           className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-all duration-300">
+          <Github size={20} />
         </a>
-        <a 
-          href="https://www.linkedin.com/in/zeyad-megahed/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-all duration-300 group"
-        >
-          <Linkedin size={20} className="transform group-hover:scale-110 transition-transform duration-300" />
+        <a href="https://www.linkedin.com/in/zeyad-megahed/" target="_blank" rel="noopener noreferrer"
+           className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-all duration-300">
+          <Linkedin size={20} />
         </a>
       </div>
 
-      <div className="flex items-center gap-1">
+      <div className="hidden md:flex items-center gap-1">
         {['About', 'Education', 'Experience', 'Projects', 'Contact'].map((section) => (
           <button
             key={section}
-            onClick={() => setActiveSection(section.toLowerCase())}
-            className="relative px-4 py-2 group"
+            onClick={() => handleNavClick(section.toLowerCase())}
+            className="relative px-3 lg:px-4 py-2 group whitespace-nowrap"
           >
-            <div className="absolute inset-0 rounded-lg transition-all duration-300 opacity-0 group-hover:opacity-100">
-              <div className="absolute inset-0 bg-white/5 rounded-lg" />
-            </div>
-
-            <span className={`relative z-10 transition-all duration-300 ${
+            <span className={`relative z-10 text-sm lg:text-base ${
               activeSection === section.toLowerCase()
                 ? 'text-white font-medium' 
                 : 'text-gray-400 group-hover:text-white'
             }`}>
               {section}
             </span>
-
-            <div className={`absolute bottom-1 left-4 right-4 h-px transform transition-all duration-300 ${
-              activeSection === section.toLowerCase()
-                ? 'scale-x-100 bg-gradient-to-r from-[#4E6E5D] to-blue-400' 
-                : 'scale-x-0 bg-[#4E6E5D]'
-            } origin-left`} />
           </button>
         ))}
       </div>
 
+      <div className="md:hidden relative">
+        <button 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-all duration-300"
+        >
+          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+
+        {isMobileMenuOpen && (
+          <div className="absolute top-full right-0 mt-2 w-48 py-2 bg-[#050517]/95 backdrop-blur-lg rounded-lg border border-white/10 shadow-lg">
+            {['About', 'Education', 'Experience', 'Projects', 'Contact'].map((section) => (
+              <button
+                key={section}
+                onClick={() => {
+                  handleNavClick(section.toLowerCase());
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full text-left px-4 py-2 hover:bg-white/5"
+              >
+                <span className={
+                  activeSection === section.toLowerCase()
+                    ? 'text-white font-medium'
+                    : 'text-gray-400'
+                }>
+                  {section}
+                </span>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
       <button 
-        onClick={() => setActiveSection('contact')}
-        className="relative group"
+        onClick={() => handleNavClick('contact')}
+        className="hidden sm:block px-4 py-2 rounded-lg bg-[#4E6E5D] bg-opacity-60 hover:bg-opacity-30 text-white transition-all duration-300"
       >
-        <div className="px-4 py-2 rounded-lg bg-[#4E6E5D] bg-opacity-60 hover:bg-opacity-30 text-[#FFFFFF] hover:text-white transition-all duration-300">
-          Let's Connect
-        </div>
+        Let's Connect
       </button>
     </div>
   </div>
 </nav>
 
         <section className="relative min-h-screen bg-[#050517] text-white overflow-hidden">
-  {/* Vertical Lines */}
-  <div className="absolute left-8 lg:left-20 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-[#4E6E5D]/40 to-transparent" />
-  <div className="absolute right-8 lg:right-20 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-[#4E6E5D]/40 to-transparent" />
+			<div className="hidden sm:block absolute left-4 md:left-8 lg:left-20 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-[#4E6E5D]/40 to-transparent" />
+			<div className="hidden sm:block absolute right-4 md:right-8 lg:right-20 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-[#4E6E5D]/40 to-transparent" />
+  
+			<div className="hidden sm:block absolute left-0 right-0 top-4 md:top-8 h-[2px] bg-gradient-to-r from-transparent via-[#4E6E5D]/40 to-transparent" />
+			<div className="hidden sm:block absolute left-4 md:left-8 lg:left-20 top-4 md:top-8 w-8 md:w-12 h-[2px] bg-gradient-to-r from-[#4E6E5D]/40 to-transparent" />
+			<div className="hidden sm:block absolute right-4 md:right-8 lg:right-20 top-4 md:top-8 w-8 md:w-12 h-[2px] bg-gradient-to-l from-[#4E6E5D]/40 to-transparent" />
+  
+			<div className="hidden sm:block absolute left-0 right-0 bottom-4 md:bottom-8 h-[2px] bg-gradient-to-r from-transparent via-[#4E6E5D]/40 to-transparent" />
+			<div className="hidden sm:block absolute left-4 md:left-8 lg:left-20 bottom-4 md:bottom-8 w-8 md:w-12 h-[2px] bg-gradient-to-r from-[#4E6E5D]/40 to-transparent" />
+			<div className="hidden sm:block absolute right-4 md:right-8 lg:right-20 bottom-4 md:bottom-8 w-8 md:w-12 h-[2px] bg-gradient-to-l from-[#4E6E5D]/40 to-transparent" />
 
-  {/* Top Lines */}
-  <div className="absolute left-0 right-0 top-8 h-[2px] bg-gradient-to-r from-transparent via-[#4E6E5D]/40 to-transparent" />
-  <div className="absolute left-8 lg:left-20 top-8 w-12 h-[2px] bg-gradient-to-r from-[#4E6E5D]/40 to-transparent" />
-  <div className="absolute right-8 lg:right-20 top-8 w-12 h-[2px] bg-gradient-to-l from-[#4E6E5D]/40 to-transparent" />
 
-  {/* Bottom Lines */}
-  <div className="absolute left-0 right-0 bottom-8 h-[2px] bg-gradient-to-r from-transparent via-[#4E6E5D]/40 to-transparent" />
-  <div className="absolute left-8 lg:left-20 bottom-8 w-12 h-[2px] bg-gradient-to-r from-[#4E6E5D]/40 to-transparent" />
-  <div className="absolute right-8 lg:right-20 bottom-8 w-12 h-[2px] bg-gradient-to-l from-[#4E6E5D]/40 to-transparent" />
-
-  {/* Main Content */}
-  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40">
-    <div className="flex flex-col max-w-3xl">
-      <div className="opacity-0 animate-slideUp flex items-center gap-4">
-        <span className="inline-block px-4 py-1.5 text-sm tracking-wider text-[#4E6E5D] border border-[#4E6E5D]/20 rounded-full">
+  <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 md:pt-40">
+    <div className="flex flex-col max-w-3xl mx-4 sm:mx-6 lg:mx-8">
+      <div className="flex flex-wrap gap-3 sm:gap-4 opacity-0 animate-slideUp">
+        <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 text-xs sm:text-sm tracking-wider text-[#4E6E5D] border border-[#4E6E5D]/20 rounded-full">
           FRONT-END DEVELOPER
         </span>
-        <span className="inline-block px-4 py-1.5 text-sm tracking-wider text-[#4E6E5D] border border-[#4E6E5D]/20 rounded-full">
+        <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 text-xs sm:text-sm tracking-wider text-[#4E6E5D] border border-[#4E6E5D]/20 rounded-full">
           WEB DESIGNER
         </span>
       </div>
-      <div className="mt-8 space-y-2">
-        <h1 className="text-6xl sm:text-7xl font-500 opacity-0 animate-slideUp delay-200">
+
+      <div className="mt-6 sm:mt-8 space-y-2">
+        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-500 opacity-0 animate-slideUp delay-200 leading-tight">
           Creating Digital
           <span className="block mt-2 text-[#4E6E5D]">Experiences</span>
         </h1>
       </div>
-      <p className="mt-8 text-lg text-gray-400 max-w-lg opacity-0 animate-slideUp delay-400">
+
+      <p className="mt-4 sm:mt-6 md:mt-8 text-sm sm:text-base md:text-lg text-gray-400 max-w-lg opacity-0 animate-slideUp delay-400">
         Hey, I'm <span className="text-white">Zeyad</span>. 
         I combine clean code with creative design to build modern web solutions.
       </p>
-      <div className="mt-12 flex items-center gap-8 opacity-0 animate-slideUp delay-600">
-        <button
-          onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
-          className="group relative flex items-center gap-2 text-[#4E6E5D] hover:text-white transition-all duration-300"
+
+      <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 opacity-0 animate-slideUp delay-600">
+        <a
+          href="https://zmegahed.github.io/Zayad-Megahed-Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative inline-flex items-center gap-2 text-[#4E6E5D] hover:text-white transition-all duration-300"
         >
           <span className="absolute -inset-x-4 -inset-y-2 border border-[#4E6E5D]/20 rounded-lg scale-75 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300" />
-          <span className="relative">View Resume</span>
-          <ArrowRight className="w-4 h-4 relative group-hover:translate-x-1 transition-transform" />
-        </button>
+          <span className="relative text-sm sm:text-base">View Resume</span>
+          <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 relative group-hover:translate-x-1 transition-transform" />
+        </a>
+        
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 bg-[#4E6E5D] rounded-full animate-pulse" />
-          <span className="text-sm text-gray-400">Available for Opportunities</span>
+          <span className="text-xs sm:text-sm text-gray-400">Available for Opportunities</span>
         </div>
       </div>
     </div>
   </div>
 
-  {/* Year Indicator */}
-  <div className="absolute bottom-12 right-10 lg:right-24 flex items-center gap-4 text-sm text-gray-500">
-    <div className="w-8 h-px bg-gray-500/50" />
+  <div className="absolute bottom-4 sm:bottom-8 md:bottom-12 right-4 sm:right-8 lg:right-24 flex items-center gap-4 text-xs sm:text-sm text-gray-500">
+    <div className="w-6 sm:w-8 h-px bg-gray-500/50" />
     <span>2024</span>
   </div>
 </section>
 
       {/* About Section */}
-      <section className="relative py-28 bg-[#050517] overflow-hidden">
-  {/* Background Elements */}
+      <section id="about" className="relative py-28 bg-[#050517] overflow-hidden">
   <div className="absolute inset-0 -z-10">
     <div className="absolute -left-64 -top-32 w-[700px] h-[700px] bg-gradient-to-r from-[#4E6E5D]/20 to-transparent rounded-full blur-[200px] animate-float" />
     <div className="absolute -right-64 -bottom-32 w-[700px] h-[700px] bg-gradient-to-l from-[#4E6E5D]/20 to-transparent rounded-full blur-[200px] animate-float" />
@@ -558,13 +550,11 @@ const Portfolio = () => {
 
   <div className="container mx-auto px-6">
     <div className="max-w-4xl mx-auto text-center">
-      {/* Header */}
       <div ref={headerRef} className={`transform transition-all duration-1000 ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
         <p className="text-[#4E6E5D] uppercase text-sm tracking-wider mb-4">A Little About Me</p>
         <h2 className="text-4xl font-bold text-white">Crafting Digital Experiences</h2>
       </div>
 
-      {/* Bio */}
       <div ref={bioRef} className={`mt-12 transform transition-all duration-1000 delay-200 ${bioVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
         <p className="text-lg text-gray-300 leading-relaxed">
           Hi, I'm Zeyad - a passionate web developer and designer based in the DMV area. I've been crafting beautiful and functional websites since high school, always driven by a desire to push the boundaries of what's possible on the web.
@@ -574,7 +564,6 @@ const Portfolio = () => {
         </p>
       </div>
 
-      {/* Skills */}
       <div ref={skillsRef} className={`mt-20 transform transition-all duration-1000 delay-400 ${skillsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
         <SkillCarousel />
       </div>
@@ -582,12 +571,11 @@ const Portfolio = () => {
   </div>
 </section>
 		  
-	  <section 
+	  <section id="education"
   ref={educationRef}
   className="relative py-24 bg-[#050517]"
 >
   <div className="max-w-7xl mx-auto px-6">
-    {/* Section Header */}
     <div className={`transform transition-all duration-1000
       ${educationVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
       <div className="inline-block">
@@ -599,9 +587,7 @@ const Portfolio = () => {
       </div>
     </div>
 
-    {/* Main Content */}
     <div className="grid lg:grid-cols-2 gap-12 mt-12">
-      {/* University Info */}
       <div className={`transform transition-all duration-700 delay-200
         ${educationVisible ? 'translate-x-0 opacity-100' : '-translate-x-12 opacity-0'}`}>
         <div className="relative">
@@ -623,9 +609,7 @@ const Portfolio = () => {
         </div>
       </div>
 
-      {/* Course List */}
       <div className="space-y-8">
-        {/* Relevant Coursework */}
         <div className={`transform transition-all duration-700 delay-400
           ${educationVisible ? 'translate-x-0 opacity-100' : 'translate-x-12 opacity-0'}`}>
           <h3 className="text-lg font-semibold text-white mb-4">Relevant Coursework</h3>
@@ -655,8 +639,8 @@ const Portfolio = () => {
 	  
 	  
       {/* Experience Section */}
-       <section 
-      ref={experienceRef}
+       <section id="experience"
+      ref={experienceRef} 
       className="relative py-24 bg-[#050517] overflow-hidden"
     >
 
@@ -677,7 +661,6 @@ const Portfolio = () => {
         </div>
 
         <div className="grid lg:grid-cols-12 gap-8">
-          {/* Timeline */}
           <div className="lg:col-span-4 space-y-4">
             {experiences.map((exp, index) => (
               <div
@@ -715,7 +698,6 @@ const Portfolio = () => {
             ))}
           </div>
 
-          {/* Experience Details */}
           <div className={`lg:col-span-8 transition-all duration-1000 delay-500
             ${experienceVisible ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'}`}
           >
@@ -773,9 +755,8 @@ const Portfolio = () => {
     </section>
 
       {/* Projects Section */}
-      <section className="relative py-24 bg-[#050517]">
+      <section id="projects" className="relative py-24 bg-[#050517]">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header */}
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-2">
             <div className="h-px w-8 bg-[#4E6E5D]"/>
@@ -784,7 +765,6 @@ const Portfolio = () => {
           <h2 className="text-3xl font-bold text-white">Featured Projects</h2>
         </div>
 
-        {/* Project Grid */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projectsData.map((project, index) => (
             <div 
@@ -792,7 +772,6 @@ const Portfolio = () => {
               className="group bg-white/5 rounded-xl overflow-hidden border border-white/10 hover:border-[#4E6E5D] 
                        transition-all duration-500 hover:bg-white/10"
             >
-              {/* Project Image */}
               {project.images && project.images[0] && (
                 <div className="relative h-48 overflow-hidden">
                   <img 
@@ -803,12 +782,10 @@ const Portfolio = () => {
                 </div>
               )}
 
-              {/* Project Info */}
               <div className="p-6">
                 <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
                 <p className="text-gray-400 mb-4 line-clamp-2">{project.description}</p>
 
-                {/* Technologies */}
                 {project.technologies && project.technologies.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.map((tech, techIndex) => (
@@ -822,7 +799,6 @@ const Portfolio = () => {
                   </div>
                 )}
 
-                {/* Links */}
                 {project.live && (
                   <div className="flex justify-between items-center">
                     <div className="flex gap-4">
@@ -840,7 +816,6 @@ const Portfolio = () => {
                 )}
               </div>
 
-              {/* Key Features Peek */}
               {project.highlights && project.highlights.length > 0 && (
                 <div className="px-6 pb-6">
                   <div className="pt-4 border-t border-white/10">
