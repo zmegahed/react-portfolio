@@ -326,8 +326,8 @@ const Portfolio = () => {
   const [bioRef, bioVisible] = useVisibility();
 
 
-   const handleViewAll = () => {
-    navigate('/react-portfolio/projects');
+  const handleViewAll = () => {
+    navigate('/projects');
   };
   
   const experiences = [
