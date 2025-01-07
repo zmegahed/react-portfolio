@@ -871,4 +871,5 @@ const App = () => {
   );
 };
 
-export default Portfolio;
+
+export default App;
