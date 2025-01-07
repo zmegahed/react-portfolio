@@ -64,10 +64,10 @@ const Projects = () => {
                                 bg-white/5 backdrop-blur-sm
                                 before:absolute before:inset-0 before:bg-gradient-to-r before:from-[#4E6E5D]/0 before:via-[#4E6E5D]/5 before:to-[#4E6E5D]/0 
                                 before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-1000">
-                    
+                   
 
                     <div className="flex-shrink-0 md:w-1/3 relative">
-                      <h3 className="text-3xl md:text-4xl font-bold text-white group-hover:text-[#4E6E5D] transition-colors duration-300">
+                      <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-[#4E6E5D] transition-colors duration-300">
                         {project.title}
                       </h3>
                       <div className="absolute -bottom-2 left-0 w-12 h-1 bg-[#4E6E5D] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
@@ -78,14 +78,8 @@ const Projects = () => {
                         {project.technologies.map((tech, techIndex) => (
                           <span 
                             key={techIndex}
-                            className="px-4 py-2 text-sm bg-white/10 text-white rounded-lg transition-all duration-300 
-                                     hover:bg-[#4E6E5D] hover:text-white transform hover:-translate-y-1 hover:scale-110
-                                     group-hover:translate-y-0 group-hover:opacity-100"
-                            style={{
-                              transitionDelay: `${techIndex * 50}ms`,
-                              opacity: 0.7,
-                              transform: 'translateY(10px)'
-                            }}
+                            className="px-4 py-2 text-sm bg-white/10 text-white/50 rounded-lg transition-all duration-500 
+                                     group-hover:bg-[#4E6E5D] group-hover:text-white transform group-hover:-translate-y-1 group-hover:scale-110"
                           >
                             {tech}
                           </span>
@@ -121,5 +115,6 @@ const Projects = () => {
     </div>
   );
 };
+
 
 export default Projects;
