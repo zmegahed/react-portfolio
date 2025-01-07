@@ -6,7 +6,7 @@ const Projects = () => {
   const navigate = useNavigate();
   
   const handleBackClick = () => {
-    navigate('/react-portfolio');
+    navigate('/');
   };
   
   const projects = [

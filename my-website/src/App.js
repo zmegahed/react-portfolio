@@ -327,7 +327,7 @@ const Portfolio = () => {
 
 
    const handleViewAll = () => {
-    navigate('/react-portfolio/projects');
+    navigate('/projects');
   };
   
   const experiences = [
@@ -864,8 +864,8 @@ const App = () => {
   return (
     <div className="app-container">
       <Routes>
-        <Route path="/react-portfolio" element={<Portfolio />} />
-        <Route path="/react-portfolio/projects" element={<Projects />} />
+        <Route path="/" element={<Portfolio />} />
+        <Route path="/projects" element={<Projects />} />
       </Routes>
     </div>
   );

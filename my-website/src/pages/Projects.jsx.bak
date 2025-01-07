@@ -4,6 +4,11 @@ import { ExternalLink, ArrowLeft } from 'lucide-react';
 
 const Projects = () => {
   const navigate = useNavigate();
+  
+  const handleBackClick = () => {
+    navigate('/react-portfolio');
+  };
+  
   const projects = [
     {
       id: 1,
