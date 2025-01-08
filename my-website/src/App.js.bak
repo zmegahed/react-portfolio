@@ -169,11 +169,11 @@ const projectsData = [
   },
   {
     id: 3,
-    title: "Stansberry One Page",
-    description: "Developed a full-stack web application featuring a grade calculator and office sign-up system with automated email notifications. The system streamlines the process of scheduling office visits while maintaining accurate records and providing instant feedback to users.",
-    technologies: ["HTML", "CSS", "JavaScript"],
-    live: "https://zmegahed.github.io/HTML_CSS_SPECIALIST/index.html",
-    images: ["./images/stansberry.png"]
+    title: "Subaru Crosstrek Landing Page Page",
+    description: "Designed a Landing Page for the New 2024 Subaru Crosstrek. ",
+    technologies: ["HTML", "CSS", "JavaScript", "JQuery"],
+    live: "https://zmegahed.github.io/Subaru-Crosstrek-Landing-Page/exercise.html",
+    images: ["./images/subaru_home_page.png"]
   }
 ];
 
@@ -564,7 +564,7 @@ const Portfolio = () => {
 
       <div ref={bioRef} className={`mt-12 transform transition-all duration-1000 delay-200 ${bioVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
         <p className="text-lg text-gray-300 leading-relaxed">
-          Hi, I'm Zeyad - a passionate web developer and designer based in the DMV area. I've been crafting beautiful and functional websites since high school, always driven by a desire to push the boundaries of what's possible on the web.
+          Hi, I'm Zeyad - a passionate UI/UX Designer and Front-end Developer based in the DMV area. I've been crafting beautiful and functional websites since high school, always driven by a desire to push the boundaries of what's possible on the web.
         </p>
         <p className="mt-6 text-lg text-gray-300 leading-relaxed">
           When I'm not coding, you can find me exploring new technologies, watching soccer, or enjoying the great outdoors. I'm constantly curious and eager to learn, and I love collaborating with others to bring innovative ideas to life.
@@ -871,4 +871,5 @@ const App = () => {
   );
 };
 
-export default Portfolio;
+
+export default App;
