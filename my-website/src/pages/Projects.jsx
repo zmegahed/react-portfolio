@@ -39,7 +39,7 @@ const Projects = () => {
       title: "TEKsystems ReDesign",
       technologies: ["Figma", "UX Design"],
       live: "https://zmegahed.github.io/TEKsystems-Web-Redesign-Zayad-Megahed.pdf"
-    }
+    },
 	{
       id: 6,
       title: "CareFirst BlueCross BlueShield",

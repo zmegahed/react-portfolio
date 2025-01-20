@@ -38,7 +38,7 @@ const Projects = () => {
       id: 5,
       title: "TEKsystems ReDesign",
       technologies: ["Figma", "UX Design"],
-      live: "https://github.com/zmegahed/zmegahed.github.io/blob/main/TEKsystems-Web-Redesign-Zayad-Megahed.pdf"
+      live: "https://zmegahed.github.io/TEKsystems-Web-Redesign-Zayad-Megahed.pdf"
     }
 	{
       id: 6,
