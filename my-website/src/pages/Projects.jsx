@@ -57,7 +57,7 @@ const Projects = () => {
       title: "Subaru Landing Page",
       technologies: ["HTML", "CSS", "JavaScript", "Bootstrap", "JQuery"],
       live: "https://zmegahed.github.io/Subaru-Crosstrek-Landing-Page/exercise.html"
-    }
+    },
 	{
       id: 9,
       title: "TEKsystems ReDesign",

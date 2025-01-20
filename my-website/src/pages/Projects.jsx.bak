@@ -29,7 +29,7 @@ const Projects = () => {
       live: "https://zmegahed.github.io/HTML_CSS_SPECIALIST/index.html"
     },
 	{
-      id: 4,
+      id: 8,
       title: "CareFirst BlueCross BlueShield",
       technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
       live: "https://individual.carefirst.com/individuals-families/health-insurance-basics/how-health-insurance-works/what-is-health-insurance.page"
@@ -53,13 +53,13 @@ const Projects = () => {
       live: "https://individual.carefirst.com/individuals-families/health-insurance-basics/health-insurance-costs/lower-prescription-costs.page"
     },
 	{
-      id: 8,
+      id: 4,
       title: "Subaru Landing Page",
       technologies: ["HTML", "CSS", "JavaScript", "Bootstrap", "JQuery"],
       live: "https://zmegahed.github.io/Subaru-Crosstrek-Landing-Page/exercise.html"
     }
 	{
-      id: 8,
+      id: 9,
       title: "TEKsystems ReDesign",
       technologies: ["Figma", "UX Design"],
       live: "https://github.com/zmegahed/zmegahed.github.io/blob/main/TEKsystems-Web-Redesign-Zayad-Megahed.pdf"
