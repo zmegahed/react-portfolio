@@ -29,40 +29,40 @@ const Projects = () => {
       live: "https://zmegahed.github.io/HTML_CSS_SPECIALIST/index.html"
     },
 	{
-      id: 8,
-      title: "CareFirst BlueCross BlueShield",
-      technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-      live: "https://individual.carefirst.com/individuals-families/health-insurance-basics/how-health-insurance-works/what-is-health-insurance.page"
-    },
-	{
-      id: 5,
-      title: "CareFirst BlueCross BlueShield",
-      technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-      live: "https://individual.carefirst.com/individuals-families/health-insurance-basics/how-health-insurance-works/aca-basics.page"
-    },
-	{
-      id: 6,
-      title: "CareFirst BlueCross BlueShield",
-      technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-      live: "https://individual.carefirst.com/individuals-families/health-insurance-basics/how-health-insurance-works/turning-26-need-health-insurance.page"
-    },
-	{
-      id: 7,
-      title: "CareFirst BlueCross BlueShield",
-      technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-      live: "https://individual.carefirst.com/individuals-families/health-insurance-basics/health-insurance-costs/lower-prescription-costs.page"
-    },
-	{
       id: 4,
       title: "Subaru Landing Page",
       technologies: ["HTML", "CSS", "JavaScript", "Bootstrap", "JQuery"],
       live: "https://zmegahed.github.io/Subaru-Crosstrek-Landing-Page/exercise.html"
     },
 	{
-      id: 9,
+      id: 5,
       title: "TEKsystems ReDesign",
       technologies: ["Figma", "UX Design"],
-      live: "https://github.com/zmegahed/zmegahed.github.io/blob/main/TEKsystems-Web-Redesign-Zayad-Megahed.pdf"
+      live: "https://zmegahed.github.io/TEKsystems-Web-Redesign-Zayad-Megahed.pdf"
+    }
+	{
+      id: 6,
+      title: "CareFirst BlueCross BlueShield",
+      technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+      live: "https://individual.carefirst.com/individuals-families/health-insurance-basics/how-health-insurance-works/aca-basics.page"
+    },
+	{
+      id: 7,
+      title: "CareFirst BlueCross BlueShield",
+      technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+      live: "https://individual.carefirst.com/individuals-families/health-insurance-basics/how-health-insurance-works/turning-26-need-health-insurance.page"
+    },
+	{
+      id: 8,
+      title: "CareFirst BlueCross BlueShield",
+      technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+      live: "https://individual.carefirst.com/individuals-families/health-insurance-basics/health-insurance-costs/lower-prescription-costs.page"
+    },
+	{
+      id: 9,
+      title: "CareFirst BlueCross BlueShield",
+      technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+      live: "https://individual.carefirst.com/individuals-families/health-insurance-basics/how-health-insurance-works/what-is-health-insurance.page"
     }
   ];
 
