@@ -56,7 +56,13 @@ const Projects = () => {
       id: 8,
       title: "Subaru Landing Page",
       technologies: ["HTML", "CSS", "JavaScript", "Bootstrap", "JQuery"],
-      live: "https://github.com/zmegahed/zmegahed.github.io/tree/main/Subaru-Crosstrek-Landing-Page"
+      live: "https://zmegahed.github.io/Subaru-Crosstrek-Landing-Page/exercise.html"
+    }
+	{
+      id: 8,
+      title: "TEKsystems ReDesign",
+      technologies: ["Figma", "UX Design"],
+      live: "https://github.com/zmegahed/zmegahed.github.io/blob/main/TEKsystems-Web-Redesign-Zayad-Megahed.pdf"
     }
   ];
 
