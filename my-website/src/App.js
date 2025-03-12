@@ -366,6 +366,24 @@ const Portfolio = () => {
       "Managed content management system and site maintenance",
       "Ensured responsive design and cross-browser compatibility"
     ]
+    },
+	{
+      company: "DealerOn",
+    role: "Front-End Web Developer",
+    duration: "Jan 2025 - May 2025",
+    type: "Contract",
+    team: "Web Development",
+    location: "Remote",
+    impact: "Complete website modernization",
+    description: "Spearheaded the complete redesign and modernization of the organization's web presence while leading development initiatives.",
+    achievements: [
+      "Determined the design and structure of web pages, employing best practices for web design to create fast, engaging, and high-converting sites",
+      "Utilized HTML5, CSS3, and JavaScript/jQuery within a content management system to code 10+ responsive webpage layouts and site templates daily that are both functional and aesthetically pleasing",
+      "Translated 12+ daily mockups, references, and copy into web content",
+      "Developed expertise working within branding guidelines of major automotive manufacturers and marketing agencies across North America",
+      "Demonstrated a solid understanding of UX design principles",
+      "Advised clients on how to optimize pages for performance, user experience, and accessibility"
+    ]
     }
   ];
   
