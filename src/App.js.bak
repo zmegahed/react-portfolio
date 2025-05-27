@@ -139,7 +139,7 @@ const SkillCarousel = () => {
         {allSkills.map((skill, index) => (
           <span 
             key={index} 
-            className="inline-flex items-center gap-2 px-4 py-2 bg-[#4E6E5D] text-[#FFFFFF0] rounded-full mx-2"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[#4E6E5D] text-[#FFFFFF] rounded-full mx-2"
           >
             {skill.icon}
             {skill.name}
