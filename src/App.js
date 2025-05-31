@@ -267,12 +267,12 @@ const SkillCarousel = () => {
 const projectsData = [
   {
     id: 1,
-    title: "Patient Health Hub",
+    title: "Fantasy Premier League Squad Predictor",
     description: "A modern, full-stack healthcare management system that provides a comprehensive interface for managing patient information, medical records, and visit history.",
-    technologies: ["React.js", "Python", "PostgreSQL"],
-    live: "https://github.com/zmegahed/Health-Patient-App",
-    images: ["./images/fitnessmeals.png"],
-    highlights: ["Real-time patient data", "Secure authentication", "Mobile responsive design"]
+    technologies: ["React.js", "Python serverless functions", "RESTful API design"],
+    live: "https://fpl-dashboard-murex.vercel.app/",
+    images: ["./images/fpl-homepage.png"],
+    highlights: ["Real-Time FPL Analytics", "Squad Optimization Engine", "Full-Stack Data Visualization"]
   },
   {
     id: 2,
