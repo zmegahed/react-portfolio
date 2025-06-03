@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Zeyad Megahed - Frontend Developer & Web Designer Portfolio" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Tailwind CSS CDN (temporary fallback) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <title>Zeyad Megahed - Portfolio</title>
+    
+    <style>
+      /* Fallback styles in case Tailwind doesn't load */
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #050517;
+        color: white;
+      }
+
+      code {
+        font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+          monospace;
+      }
+
+      /* Loading spinner */
+      .loading-spinner {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        height: 40px;
+        border: 3px solid #4E6E5D;
+        border-top: 3px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg); }
+      }
+
+      /* Hide spinner when React loads */
+      #root:not(:empty) + .loading-spinner {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    
+    <!-- Loading spinner (shown until React loads) -->
+    <div class="loading-spinner"></div>
+    
+    <!-- Debug script to help identify issues -->
+    <script>
+      // Check if React is loading
+      setTimeout(() => {
+        const root = document.getElementById('root');
+        if (!root.innerHTML.trim()) {
+          console.error('React app failed to load after 5 seconds');
+          console.log('Root element:', root);
+          
+          // Show a basic error message
+          root.innerHTML = `
+            <div style="padding: 20px; color: white; background: #050517; min-height: 100vh; font-family: Arial, sans-serif;">
+              <h1>Loading Error</h1>
+              <p>The React application failed to load. Check the browser console for details.</p>
+              <p>Common issues:</p>
+              <ul>
+                <li>JavaScript errors preventing React from starting</li>
+                <li>Missing dependencies</li>
+                <li>Build configuration problems</li>
+              </ul>
+              <button onclick="window.location.reload()" style="padding: 10px 20px; background: #4E6E5D; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;">
+                Reload Page
+              </button>
+            </div>
+          `;
+        }
+      }, 5000);
+    </script>
+  </body>
+</html>
