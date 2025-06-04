@@ -34,8 +34,8 @@ jobs:
     - name: Build for GitHub Pages
       run: |
         sed -i 's/"homepage": "."/"homepage": "https:\/\/zmegahed.github.io\/react-portfolio"/' package.json
-        cp 404.html build/404.html
         npm run build
+        cp 404.html build/404.html
       env:
         CI: false
         
