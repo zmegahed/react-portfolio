@@ -33,7 +33,7 @@ jobs:
       
     - name: Build for GitHub Pages
       run: |
-        sed -i 's/"homepage": "."/"homepage": "https:\/\/zmegahed.github.io\/react-portfolio/"/' package.json
+        sed -i 's/"homepage": "."/"homepage": "https:\/\/zmegahed.github.io\/react-portfolio"/' package.json
         npm run build
       env:
         CI: false
