@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    // Fix for GitHub Pages trailing slash
+    var l = window.location;
+    
+    // If URL has trailing slash, redirect to version without
+    if (l.pathname.endsWith('/') && l.pathname !== '/') {
+      l.replace(l.pathname.slice(0, -1) + l.search + l.hash);
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
