@@ -1,8 +1,8 @@
-name: Deploy to GitHub Pages
+name: Deploy Redirect to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]  # Changed from 'main' to 'master'
   workflow_dispatch:
 
 permissions:
@@ -22,22 +22,134 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'npm'
-        
-    - name: Install dependencies
-      run: npm ci
-      
-    - name: Build for GitHub Pages
+    - name: Create redirect page
       run: |
-        sed -i 's/"homepage": "."/"homepage": "https:\/\/zmegahed.github.io\/react-portfolio"/' package.json
-        npm run build
-        cp 404.html build/404.html
-      env:
-        CI: false
+        mkdir -p redirect-build
+        cat > redirect-build/index.html << 'EOF'
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Redirecting to New Portfolio...</title>
+            
+            <!-- Immediate redirect -->
+            <meta http-equiv="refresh" content="0; url=https://www.zayad-megahed.com">
+            
+            <!-- Canonical URL for SEO -->
+            <link rel="canonical" href="https://www.zayad-megahed.com">
+            
+            <!-- SEO Meta Tags -->
+            <meta name="description" content="Zeyad Megahed - Frontend Developer & Web Designer Portfolio">
+            <meta name="robots" content="noindex, follow">
+            
+            <!-- JavaScript redirect as backup -->
+            <script>
+                window.location.replace('https://www.zayad-megahed.com');
+                setTimeout(function() {
+                    window.location.href = 'https://www.zayad-megahed.com';
+                }, 100);
+            </script>
+            
+            <style>
+                body {
+                    margin: 0;
+                    padding: 0;
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                    background: linear-gradient(135deg, #050517 0%, #1a1a2e 100%);
+                    color: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-height: 100vh;
+                    text-align: center;
+                }
+                
+                .redirect-container {
+                    max-width: 500px;
+                    padding: 2rem;
+                }
+                
+                .spinner {
+                    width: 50px;
+                    height: 50px;
+                    border: 3px solid #4E6E5D;
+                    border-top: 3px solid transparent;
+                    border-radius: 50%;
+                    animation: spin 1s linear infinite;
+                    margin: 0 auto 2rem auto;
+                }
+                
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+                
+                h1 {
+                    font-size: 1.5rem;
+                    margin-bottom: 1rem;
+                    color: #4E6E5D;
+                }
+                
+                p {
+                    color: #ccc;
+                    margin-bottom: 2rem;
+                }
+                
+                .fallback-link {
+                    display: inline-block;
+                    padding: 12px 24px;
+                    background: linear-gradient(45deg, #4E6E5D, #6B8E73);
+                    color: white;
+                    text-decoration: none;
+                    border-radius: 8px;
+                    transition: transform 0.3s ease;
+                }
+                
+                .fallback-link:hover {
+                    transform: translateY(-2px);
+                }
+            </style>
+        </head>
+        <body>
+            <div class="redirect-container">
+                <div class="spinner"></div>
+                <h1>Redirecting to New Portfolio...</h1>
+                <p>You're being automatically redirected to my new portfolio website.</p>
+                <p>If the redirect doesn't work, please click the link below:</p>
+                <a href="https://www.zayad-megahed.com" class="fallback-link">
+                    Visit New Portfolio
+                </a>
+            </div>
+            
+            <noscript>
+                <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                    <h1>Portfolio Moved</h1>
+                    <p>My portfolio has moved to a new location.</p>
+                    <a href="https://www.zayad-megahed.com" style="color: #4E6E5D;">Click here to visit my new portfolio</a>
+                </div>
+            </noscript>
+        </body>
+        </html>
+        EOF
+        
+        # Create 404.html for handling trailing slash redirects
+        cat > redirect-build/404.html << 'EOF'
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="utf-8">
+          <title>Redirecting...</title>
+          <script>
+            // Redirect to new portfolio site
+            window.location.replace('https://www.zayad-megahed.com');
+          </script>
+        </head>
+        <body>
+          <p>Redirecting to new portfolio...</p>
+        </body>
+        </html>
+        EOF
         
     - name: Setup Pages
       uses: actions/configure-pages@v4
@@ -45,7 +157,7 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: ./build
+        path: ./redirect-build
         
     - name: Deploy to GitHub Pages
       id: deployment
