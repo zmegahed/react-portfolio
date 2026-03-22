@@ -139,7 +139,7 @@ export default function App() {
         '--newsprint': agingStage.backgroundColor,
         color: '#1A1A1A',
         opacity: agingStage.textOpacity,
-      } as React.CSSProperties}
+      }}
     >
       {/* Custom Cursor */}
       <CustomCursor />
