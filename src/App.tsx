@@ -1,14 +1,14 @@
 import { useEffect, useState, useRef } from 'react';
-import { Masthead } from './components/Masthead';
-import { Hero } from './components/Hero';
-import { About } from './components/About';
-import { Education } from './components/Education';
-import { Experience } from './components/Experience';
-import { Projects } from './components/Projects';
-import { Contact } from './components/Contact';
-import { CustomCursor } from './components/CustomCursor';
-import { GrainOverlay } from './components/GrainOverlay';
-import { ScrollProgress } from './components/ScrollProgress';
+import { Masthead } from './app/components/Masthead';
+import { Hero } from './app/components/Hero';
+import { About } from './app/components/About';
+import { Education } from './app/components/Education';
+import { Experience } from './app/components/Experience';
+import { Projects } from './app/components/Projects';
+import { Contact } from './app/components/Contact';
+import { CustomCursor } from './app/components/CustomCursor';
+import { GrainOverlay } from './app/components/GrainOverlay';
+import { ScrollProgress } from './app/components/ScrollProgress';
 
 interface AgingStage {
   backgroundColor: string;
