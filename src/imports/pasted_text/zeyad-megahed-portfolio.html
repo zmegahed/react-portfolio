@@ -1,0 +1,125 @@
+Design an Awwwards SOTD portfolio for Zeyad Megahed built entirely around the concept of a living, aging broadsheet newspaper. This is not a dark developer portfolio. There is no glassmorphism. No gradients. No dark backgrounds. This is the most unexpected, fully committed editorial concept a front-end developer has ever shipped.
+
+CONCEPT
+The portfolio is a broadsheet newspaper called THE MEGAHED DISPATCH. Masthead sits at the top like the New York Times. The entire layout uses a strict newspaper column grid — 6 columns on desktop, gutters at 20px, everything justified. As the user scrolls down the page, the paper physically ages: background warms from #F5F0E8 (fresh newsprint) toward #C9B99A (aged, foxed paper). Grain texture intensifies. By the contact section the paper looks 40 years old.
+
+COLOR SYSTEM
+Exactly three colors. No exceptions.
+
+#F5F0E8 — newsprint white
+#1A1A1A — near-black ink
+#D0021B — single bold red, used only for: the masthead rule, pull quote borders, classified ad borders, and the editor's pen cursor
+
+No green. No blue. No gradients. No shadows except those that simulate paper depth.
+
+TYPOGRAPHY
+
+Display headlines: Playfair Display Bold, 160–220px, tracked tight
+Decks and subheads: Playfair Display Italic, 28–40px
+Body columns: IBM Plex Serif, 14px, justified, leading 1.6
+Datelines, labels, metadata: IBM Plex Mono, 10–11px, uppercase, tracked wide
+The contrast between 200px headline and 11px dateline is the entire aesthetic. No medium-weight type in the hero.
+
+
+MASTHEAD (NAV)
+Full-width masthead exactly like a newspaper header. Large centered serif: THE MEGAHED DISPATCH. Below it, a single 2px red rule. Below that, a thin line in small caps mono: FRONT-END DEVELOPER & WEB DESIGNER · FAIRFAX, VA · EST. 2021 · VOL. 3, NO. 47. Nav links run horizontally below this like newspaper section tabs: ABOUT / EDUCATION / EXPERIENCE / PROJECTS / CONTACT. No background, no pills, no hover backgrounds — links get a red underline on hover only.
+
+HERO — ABOVE THE FOLD
+Everything above 100vh is "above the fold." A massive 6-column headline dominates: "DEVELOPER BUILDS THINGS PEOPLE ACTUALLY USE" in Playfair Display at 180px, spanning the full grid. A 2-column deck below it in italic: "Local front-end developer, 3 years in the field, has completed over 50 projects without once using a carousel." A byline in mono: By Zeyad Megahed · Staff Correspondent. Today's date. A vertical red rule divides a 4-column and 2-column layout. The 2-column right side has a halftone-dotted portrait placeholder box with a caption below it in mono. A "SCROLL TO READ ON" indicator at the very bottom in small mono type with a single downward arrow.
+
+AGING EFFECT
+The page background transitions through 4 stages driven entirely by scroll position:
+
+Stage 1 — Hero: #F5F0E8, no grain
+Stage 2 — About/Education: #EDE3D0, light grain 6%, ink edges soften 0.3px
+Stage 3 — Experience/Projects: #DDD0B5, grain 12%, images get sepia 30%, type feels lighter
+Stage 4 — Contact: #C9B99A, grain 18%, images sepia 60%, text opacity 85%, ink worn
+
+This is a smooth continuous interpolation — not jumps. Background color and grain opacity are updated every scroll frame via JS interpolation. CSS custom properties handle the actual rendering.
+
+ABOUT SECTION
+Laid out as a feature article. Headline: "WHO IS ZEYAD MEGAHED?" set large, full width. Deck in italic beneath. Three columns of justified body copy: "Hi, I'm Zeyad — a UI/UX Designer and Front-end Developer based in the DMV area. I've been crafting beautiful and functional websites since high school, always driven by a desire to push the boundaries of what's possible on the web. When I'm not coding, you can find me exploring new technologies, watching soccer, or enjoying the great outdoors." A large pull quote breaking across two columns: "50 projects. 3 companies. Zero templates." — set at 72px in a red-bordered box. Stats (50+ Projects, 3+ Years, 3 Companies) displayed as a newspaper data infographic box in the right column — oversized numerals, thin rules between each stat, mono labels. Skills run as a classified-ads row at the bottom: monospaced, tight, all caps: FOR HIRE: JavaScript · React · TypeScript · Python · PHP · WordPress · MySQL · Adobe Suite
+
+EDUCATION SECTION
+Laid out as a news brief column. Headline: "LOCAL DEVELOPER GRADUATES CUM LAUDE, CITES 'CURIOSITY' AS PRIMARY SKILL". Body copy in newspaper style: George Mason University, B.S. Information Technology, Web Application Development concentration, GPA 3.7, Cum Laude, Dean's List. Coursework listed as a tight mono block in the right column — like a newspaper sidebar fact box with a ruled border.
+
+EXPERIENCE SECTION
+Three companies laid out as three separate newspaper articles side by side, divided by vertical column rules. Each is a self-contained story:
+
+CareFirst: "INTERN SHIPS 15 PAGES, IMPROVES LOAD TIME BY 30%" — Jan 2023–Aug 2024, Baltimore MD, Digital Design team
+Madina Islamic Center: "LOCAL DEVELOPER LEADS CENTER'S DIGITAL OVERHAUL" — Jul 2023–May 2024, Remote, Team Lead
+DealerOn: "FRONT-END DEV TRANSLATES 12 MOCKUPS DAILY, CLIENTS REPORTEDLY PLEASED" — Jan–May 2025, Remote, Contract
+
+Achievement bullets formatted as newspaper paragraph body copy — not bullet points. Each story has its own byline, dateline, and mono metadata. The active/selected story gets a red left border like an editor's mark.
+
+PROJECTS SECTION — ARTS & CULTURE
+Laid out as the Arts & Culture section. Each project is a newspaper review:
+
+Fantasy Premier League Squad Predictor — React.js, Python serverless, RESTful API. Headline: "SQUAD PREDICTOR EARNS RARE FIVE STARS; ANALYST CALLS IT 'GENUINELY USEFUL'"
+Madina Islamic Center Rework — WordPress, CSS, Elementor, JS. Headline: "SITE REDESIGN COMPLETE; BOOKING SYSTEM WORKS ON FIRST TRY"
+Subaru Crosstrek Landing Page — HTML, CSS, JS, jQuery. Headline: "LANDING PAGE REVIEWED: ANIMATIONS SMOOTH, SEO INTACT, DEALER SATISFIED"
+
+Each card has a red star rating (out of 5). Tech stack listed as a mono "Credits" block at the bottom. Live Demo link styled as a boxed classified ad with red border and mono type. On hover: card lifts 4px, dog-ear triangle appears bottom-right corner, headline turns red.
+
+CONTACT SECTION — THE BACK PAGE
+Full-width aged paper (#C9B99A), heavy grain. A massive headline centered: "AVAILABLE FOR OPPORTUNITIES. SERIOUS INQUIRIES ONLY." Below: an op-ed column written in newspaper editorial voice — Zeyad's contact pitch. Then a classified ads grid: each contact method (Email: zeyadfouad34@gmail.com, GitHub: zmegahed, LinkedIn: zeyad-megahed) in its own red-bordered classified box with mono type. Bottom of page: the masthead repeats small, faded, like a newspaper footer. © THE MEGAHED DISPATCH. ALL PITCHES CONSIDERED.
+
+CURSOR
+Replace the system cursor with a red SVG editor's pen (28px, angled 35 degrees, nib at bottom-left). Hotspot at the nib tip. The pen has a slight 8px lag behind the real pointer position — physical drag. Hover states:
+
+Over text/links: red underline draws beneath the hovered word (SVG line scaleX 0→1, 200ms)
+Over headlines: full-width underline sweeps left to right (400ms)
+Over project cards: red circle draws around the card (SVG stroke-dashoffset animation, 500ms)
+On click: brief red strikethrough crosses the element (scaleX 0→1→0, 300ms total)
+After 3s idle: pen tilts to 55 degrees — resting on the desk
+
+
+MOTION SYSTEM
+Easing curves:
+
+Default: cubic-bezier(0.25, 0.46, 0.45, 0.94) — paper settling
+Entrance: cubic-bezier(0.0, 0.0, 0.2, 1.0) — heavy, deliberate
+Exit: cubic-bezier(0.4, 0.0, 1, 1) — ink dries fast
+Fold transition: cubic-bezier(0.645, 0.045, 0.355, 1.0) — symmetric, physical
+
+Durations:
+
+Micro (cursor, underlines): 80–120ms
+Short (link hovers, borders): 200–300ms
+Medium (article reveals, pull quotes): 500–700ms
+Long (fold transitions, aging stage): 900–1400ms
+Stagger interval: 30ms per element
+
+Page load sequence (printing press metaphor):
+
+0ms: Background #F5F0E8 renders
+0ms / 600ms: Grain texture fades to 2%
+300ms / 400ms: Masthead clips in left to right
+700ms / 200ms: Red rule draws left to right
+900ms / 200ms: Thin black rule draws
+1000ms / 300ms: Dateline fades up from +8px
+1100ms / 500ms: Headline clips in column by column, 80ms stagger per column
+1600ms / 300ms: Deck text fades in
+1900ms / 400ms: Byline prints left to right
+2100ms / 500ms: Body copy columns reveal top to bottom, 60ms stagger
+2400ms / 300ms: Portrait box fades in last
+2600ms: Cursor pen activates
+
+Section fold transition:
+When scrolling past a section, the current section folds away: bottom half rotates rotateX(0) → rotateX(-180deg), transform-origin top center, perspective 1200px on parent. A fold crease shadow appears at the midpoint — 2px dark line that peaks at 90deg rotation and fades as fold completes. A gradient overlay darkens the folding half as it rotates. Duration 1000ms. backface-visibility: hidden on both halves. Mobile fallback: crossfade 400ms.
+Scroll-triggered reveals:
+
+Headlines: clip-path inset(0 100% 0 0) → inset(0 0% 0 0), 600ms
+Rules and borders: scaleX 0→1, transform-origin left, 200ms
+Body text: opacity only, stagger 40ms per paragraph — ink appearing, no spatial origin
+Pull quotes: red border draws first (scaleX then scaleY), text fades after 200ms delay
+Images: opacity 0→1 only, 200ms delay after surrounding text
+
+Project card tear-out on click:
+Phase 1 (200ms): Card edges become ragged SVG clip-path. Phase 2 (150ms): Card scales to 1.05, lifts. Phase 3 (300ms): Grid hole collapses. Phase 4 (600ms): Card expands to fullscreen. Content fades in after 400ms delay. Close reverses all phases. The hole left in the layout shows raw newsprint texture with torn-edge SVG clip while overlay is open.
+Contact classified link hover:
+Red border fill sweeps left to right behind text (::before scaleX 0→1, 300ms). Text color inverts to #F5F0E8 when covered. On mouseout: sweeps back right to left.
+The one rule: If it doesn't feel like paper, cut it.
+
+DELIVERABLES
+1440px desktop and 390px mobile. Mobile collapses to single-column tabloid. Masthead stacks vertically. Section tabs become hamburger. Aging effect still applies on mobile. All frames: desktop hero, about, education, experience (one article open), projects, contact. Mobile: hero and contact minimum.
